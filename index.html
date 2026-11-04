@@ -3,107 +3,1160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Лабораторная работа № 5 — Git</title>
+    <title>Мята — кафе с душой</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #0d1117;
-            color: #c9d1d9;
-            line-height: 1.6;
+            font-family: 'DM Sans', sans-serif;
+            color: #27352b;
+            background: #faf9f5;
         }
+
+        button, input {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
         header {
-            background-color: #161b22;
-            padding: 40px 20px;
-            text-align: center;
-            border-bottom: 1px solid #30363d;
-        }
-        header h1 {
-            font-size: 32px;
-            color: #58a6ff;
-            margin-bottom: 10px;
-        }
-        header p {
-            font-size: 18px;
-            color: #8b949e;
-        }
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-        h2 {
-            color: #58a6ff;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #30363d;
-            padding-bottom: 10px;
-        }
-        .card {
-            background-color: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        .card h3 {
-            color: #79c0ff;
-            margin-bottom: 10px;
-        }
-        .gallery {
+            height: 82px;
             display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-top: 20px;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8%;
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 15px #00000008;
         }
-        .gallery img {
-            width: 250px;
-            height: 160px;
-            object-fit: cover;
-            border-radius: 8px;
-            border: 1px solid #30363d;
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 30px;
+            font-weight: 700;
+            color: #52775b;
         }
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: #8b949e;
+
+        .logo span {
+            color: #d49b5c;
+        }
+
+        nav {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+
+        nav a {
             font-size: 14px;
-            border-top: 1px solid #30363d;
-            margin-top: 40px;
+            font-weight: 600;
+            transition: .2s;
+        }
+
+        nav a:hover {
+            color: #719477;
+        }
+
+        .cart-button {
+            border: none;
+            background: #52775b;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+
+        .cart-button:hover {
+            background: #3d6046;
+        }
+
+        .hero {
+            min-height: 570px;
+            display: flex;
+            align-items: center;
+            padding: 70px 10%;
+            color: white;
+            background:
+                linear-gradient(90deg, #17291fd9 0%, #17291f85 55%, #17291f30 100%),
+                url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=2000&q=85')
+                center/cover;
+        }
+
+        .hero-content {
+            max-width: 620px;
+        }
+
+        .hero-label {
+            color: #e5c99d;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(42px, 6vw, 70px);
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            line-height: 1.8;
+            color: #eee;
+            margin-bottom: 35px;
+            max-width: 500px;
+        }
+
+        .main-button {
+            display: inline-block;
+            background: #d6a66e;
+            color: #263329;
+            padding: 16px 32px;
+            border-radius: 35px;
+            font-weight: 700;
+            transition: .2s;
+        }
+
+        .main-button:hover {
+            background: #e9bd89;
+            transform: translateY(-2px);
+        }
+
+        .section {
+            padding: 85px 8%;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-heading span {
+            color: #a77c4c;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .section-heading h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            margin-top: 12px;
+            color: #293d2e;
+        }
+
+        .section-heading p {
+            color: #858b82;
+            margin-top: 12px;
+        }
+
+        .menu-tools {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+
+        .category-button {
+            padding: 11px 23px;
+            border: 1px solid #dce2d9;
+            background: white;
+            color: #526454;
+            border-radius: 30px;
+            transition: .2s;
+        }
+
+        .category-button:hover,
+        .category-button.active {
+            background: #52775b;
+            color: white;
+            border-color: #52775b;
+        }
+
+        .search-box {
+            display: block;
+            width: min(420px, 100%);
+            margin: 0 auto 40px;
+            padding: 15px 20px;
+            border: 1px solid #dce2d9;
+            border-radius: 30px;
+            outline: none;
+            background: white;
+        }
+
+        .search-box:focus {
+            border-color: #52775b;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .food-card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px #253c2b0b;
+            transition: .3s;
+        }
+
+        .food-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px #253c2b16;
+        }
+
+        .food-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .food-info {
+            padding: 22px;
+        }
+
+        .food-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            margin-bottom: 9px;
+        }
+
+        .food-info p {
+            color: #858b82;
+            font-size: 13px;
+            line-height: 1.6;
+            min-height: 42px;
+        }
+
+        .food-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 22px;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: 700;
+            color: #52775b;
+        }
+
+        .add-button {
+            background: #52775b;
+            border: none;
+            color: white;
+            padding: 11px 19px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .add-button:hover {
+            background: #3d6046;
+        }
+
+        .about {
+            background: #eef1e9;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about img {
+            width: 100%;
+            height: 430px;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .about-text span {
+            color: #a77c4c;
+            letter-spacing: 3px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .about-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            margin: 17px 0 22px;
+        }
+
+        .about-text p {
+            color: #68746a;
+            line-height: 1.9;
+            margin-bottom: 16px;
+        }
+
+        .advantages {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .advantage {
+            text-align: center;
+            padding: 25px 15px;
+            background: white;
+            border-radius: 15px;
+        }
+
+        .advantage .emoji {
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        .advantage h3 {
+            font-size: 15px;
+            margin-bottom: 7px;
+        }
+
+        .advantage p {
+            font-size: 12px;
+            color: #858b82;
+            margin: 0;
+        }
+
+        .contacts {
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .contact-item {
+            padding: 30px 20px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px #00000008;
+        }
+
+        .contact-item .emoji {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .contact-item h3 {
+            margin-bottom: 10px;
+        }
+
+        .contact-item p {
+            color: #858b82;
+            font-size: 14px;
+        }
+
+        footer {
+            background: #263b2c;
+            color: #dce5dc;
+            padding: 35px 8%;
+            text-align: center;
+        }
+
+        footer .logo {
+            color: white;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        footer p {
+            font-size: 13px;
+            color: #aebdaf;
+        }
+
+        /* Корзина */
+
+        .cart-overlay {
+            position: fixed;
+            inset: 0;
+            background: #0008;
+            z-index: 200;
+            display: none;
+            justify-content: flex-end;
+        }
+
+        .cart-overlay.open {
+            display: flex;
+        }
+
+        .cart-panel {
+            background: #faf9f5;
+            width: 100%;
+            max-width: 440px;
+            height: 100%;
+            padding: 30px;
+            overflow-y: auto;
+            animation: slideIn .25s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .cart-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+        }
+
+        .close-cart {
+            border: none;
+            background: none;
+            font-size: 28px;
+            color: #526454;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            border-bottom: 1px solid #e2e5dd;
+            padding: 16px 0;
+        }
+
+        .cart-item h4 {
+            margin-bottom: 6px;
+        }
+
+        .cart-item small {
+            color: #858b82;
+        }
+
+        .quantity {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .quantity button {
+            width: 25px;
+            height: 25px;
+            border: none;
+            background: #e5eadf;
+            border-radius: 50%;
+        }
+
+        .remove-item {
+            border: none;
+            background: none;
+            color: #b45b50;
+            font-size: 12px;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 21px;
+            font-weight: 700;
+            margin: 25px 0;
+        }
+
+        .checkout-button {
+            width: 100%;
+            padding: 15px;
+            background: #52775b;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 700;
+        }
+
+        .empty-cart {
+            text-align: center;
+            color: #858b82;
+            padding: 45px 10px;
+        }
+
+        .empty-cart div {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .notice {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #263b2c;
+            color: white;
+            padding: 14px 25px;
+            border-radius: 30px;
+            z-index: 300;
+            transition: .3s;
+            opacity: 0;
+        }
+
+        .notice.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        @media (max-width: 900px) {
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .about img {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 0 5%;
+                height: 70px;
+            }
+
+            nav {
+                gap: 12px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+
+            .cart-button {
+                padding: 9px 12px;
+                font-size: 12px;
+            }
+
+            .hero {
+                min-height: 500px;
+                padding: 55px 7%;
+            }
+
+            .section {
+                padding: 65px 6%;
+            }
+
+            .section-heading h2,
+            .about-text h2 {
+                font-size: 34px;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .advantages {
+                grid-template-columns: 1fr;
+            }
+
+            .food-card img {
+                height: 230px;
+            }
         }
     </style>
 </head>
+
 <body>
-    <header>
-        <h1>Лабораторная работа № 5</h1>
-        <p>Организация репозитория в системе управления версиями Git</p>
-    </header>
 
-    <div class="container">
-        <h2>О работе</h2>
-        <div class="card">
-            <h3>Цель</h3>
-            <p>Получение практических навыков работы с Git и сервисом GitHub: создание репозитория, работа с ветками, форк, публикация сайта.</p>
-        </div>
+<header>
+    <a href="#" class="logo">Мята<span>.</span></a>
 
-        <div class="card">
-            <h3>Что было сделано</h3>
-            <p>1. Создан аккаунт и репозиторий на GitHub<br>
-               2. Созданы несколько ветвей проекта<br>
-               3. Выполнен форк внешнего репозитория<br>
-               4. Создан и опубликован учебный сайт<br>
-               5. Использован агент для внесения изменений</p>
-        </div>
+    <nav>
+        <a href="#menu">Меню</a>
+        <a href="#about">О нас</a>
+        <a href="#contacts">Контакты</a>
+    </nav>
 
-        <h2>Примеры изображений</h2>
-        <div class="gallery">
-            <img src="https://picsum.photos/id/0/400/300" alt="Фото 1">
-            <img src="https://picsum.photos/id/1/400/300" alt="Фото 2">
-            <img src="https://picsum.photos/id/2/400/300" alt="Фото 3">
-        </div>
+    <button class="cart-button" onclick="openCart()">
+        🛒 Корзина <span id="cart-count">0</span>
+    </button>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-label">Добро пожаловать в кафе «Мята»</div>
+
+        <h1>Вкус, который создаёт настроение</h1>
+
+        <p>
+            Уютное место, где встречаются ароматный кофе,
+            свежие продукты и любовь к хорошей кухне.
+        </p>
+
+        <a href="#menu" class="main-button">Посмотреть меню</a>
+    </div>
+</section>
+
+<section class="section" id="menu">
+
+    <div class="section-heading">
+        <span>Наше предложение</span>
+        <h2>Меню кафе</h2>
+        <p>Выбирайте любимые блюда и наслаждайтесь каждым моментом</p>
     </div>
 
-    <footer>
-        Студент гр. 4611з | Демидов Евгений Олегович | 2026
-    </footer>
+    <div class="menu-tools">
+        <button class="category-button active" onclick="filterMenu('Все', this)">Все блюда</button>
+        <button class="category-button" onclick="filterMenu('Завтраки', this)">Завтраки</button>
+        <button class="category-button" onclick="filterMenu('Основное', this)">Основное</button>
+        <button class="category-button" onclick="filterMenu('Десерты', this)">Десерты</button>
+        <button class="category-button" onclick="filterMenu('Напитки', this)">Напитки</button>
+    </div>
+
+    <input
+        type="text"
+        class="search-box"
+        id="search"
+        placeholder="🔍 Найти блюдо..."
+        oninput="renderMenu()"
+    >
+
+    <div class="menu-grid" id="menu-grid"></div>
+
+</section>
+
+<section class="section about" id="about">
+
+    <img
+        src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=85"
+        alt="Интерьер уютного кафе"
+    >
+
+    <div class="about-text">
+        <span>Немного о нас</span>
+
+        <h2>Место, куда хочется возвращаться</h2>
+
+        <p>
+            «Мята» — это небольшое уютное кафе, созданное
+            для тех, кто ценит вкусную еду, качественный кофе
+            и приятную атмосферу.
+        </p>
+
+        <p>
+            Мы готовим из свежих продуктов, уделяем внимание
+            каждой детали и стараемся сделать каждый ваш визит
+            особенным.
+        </p>
+
+        <a href="#contacts" class="main-button">Найти нас</a>
+    </div>
+
+</section>
+
+<section class="section">
+
+    <div class="section-heading">
+        <span>Почему выбирают нас</span>
+        <h2>Наши преимущества</h2>
+    </div>
+
+    <div class="advantages">
+
+        <div class="advantage">
+            <div class="emoji">🥗</div>
+            <h3>Свежие продукты</h3>
+            <p>Только качественные ингредиенты</p>
+        </div>
+
+        <div class="advantage">
+            <div class="emoji">☕</div>
+            <h3>Вкусный кофе</h3>
+            <p>Ароматный кофе каждый день</p>
+        </div>
+
+        <div class="advantage">
+            <div class="emoji">❤️</div>
+            <h3>Уютная атмосфера</h3>
+            <p>Место для отдыха и встреч</p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section contacts" id="contacts">
+
+    <div class="section-heading">
+        <span>Будем рады вас видеть</span>
+        <h2>Наши контакты</h2>
+        <p>Заглядывайте к нам в гости!</p>
+    </div>
+
+    <div class="contact-grid">
+
+        <div class="contact-item">
+            <div class="emoji">📍</div>
+            <h3>Адрес</h3>
+            <p>г. Москва, ул. Центральная, 15</p>
+        </div>
+
+        <div class="contact-item">
+            <div class="emoji">🕒</div>
+            <h3>Время работы</h3>
+            <p>Ежедневно: 09:00 – 22:00</p>
+        </div>
+
+        <div class="contact-item">
+            <div class="emoji">📞</div>
+            <h3>Телефон</h3>
+            <p>+7 (999) 123-45-67</p>
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+    <a href="#" class="logo">Мята<span>.</span></a>
+    <p>© 2026 Кафе «Мята». Все права защищены.</p>
+</footer>
+
+<!-- Корзина -->
+
+<div class="cart-overlay" id="cart-overlay" onclick="overlayClick(event)">
+
+    <div class="cart-panel">
+
+        <div class="cart-header">
+            <h2>Ваша корзина</h2>
+            <button class="close-cart" onclick="closeCart()">×</button>
+        </div>
+
+        <div id="cart-items"></div>
+
+        <div id="cart-footer" style="display:none">
+            <div class="cart-total">
+                <span>Итого:</span>
+                <span id="cart-total">0 ₽</span>
+            </div>
+
+            <button class="checkout-button" onclick="checkout()">
+                Оформить заказ
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="notice" id="notice">Товар добавлен в корзину!</div>
+
+<script>
+
+const products = [
+
+    {
+        id: 1,
+        name: "Английский завтрак",
+        category: "Завтраки",
+        price: 490,
+        description: "Яйца, бекон, сосиски, фасоль и свежие овощи.",
+        image: "https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=700&q=85"
+    },
+
+    {
+        id: 2,
+        name: "Авокадо-тост",
+        category: "Завтраки",
+        price: 390,
+        description: "Хрустящий хлеб, авокадо и яйцо пашот.",
+        image: "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=700&q=85"
+    },
+
+    {
+        id: 3,
+        name: "Сырники",
+        category: "Завтраки",
+        price: 350,
+        description: "Нежные сырники со сметаной и ягодным соусом.",
+        image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=700&q=85"
+    },
+
+    {
+        id: 4,
+        name: "Паста Карбонара",
+        category: "Основное",
+        price: 590,
+        description: "Паста с беконом, сливочным соусом и пармезаном.",
+        image: "https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&w=700&q=85"
+    },
+
+    {
+        id: 5,
+        name: "Бургер Мята",
+        category: "Основное",
+        price: 650,
+        description: "Сочная котлета, сыр, овощи и фирменный соус.",
+        image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=85"
+    },
+
+    {
+        id: 6,
+        name: "Цезарь с курицей",
+        category: "Основное",
+        price: 520,
+        description: "Куриное филе, салат, сухарики и соус Цезарь.",
+        image: "https://images.unsplash.com/photo-1546793665-c74683f339c1?auto=format&fit=crop&w=700&q=85"
+    },
+
+    {
+        id: 7,
+        name: "Шоколадный торт",
+        category: "Десерты",
+        price: 320,
+        description: "Нежный шоколадный бисквит с кремом.",
+        image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=85"
+    },
+
+    {
+        id: 8,
+        name: "Чизкейк",
+        category: "Десерты",
+        price: 350,
+        description: "Классический чизкейк с ягодным топпингом.",
+        image: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=700&q=85"
+    },
+
+    {
+        id: 9,
+        name: "Круассан",
+        category: "Десерты",
+        price: 220,
+        description: "Свежий французский круассан с хрустящей корочкой.",
+        image: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=700&q=85"
+    },
+
+    {
+        id: 10,
+        name: "Капучино",
+        category: "Напитки",
+        price: 220,
+        description: "Эспрессо с нежной молочной пенкой.",
+        image: "https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=700&q=85"
+    },
+
+    {
+        id: 11,
+        name: "Латте",
+        category: "Напитки",
+        price: 250,
+        description: "Мягкий кофейный вкус с молоком.",
+        image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=700&q=85"
+    },
+
+    {
+        id: 12,
+        name: "Клубничный лимонад",
+        category: "Напитки",
+        price: 290,
+        description: "Освежающий лимонад с клубникой и мятой.",
+        image: "https://images.unsplash.com/photo-1513558161293-cdaf765edfd4?auto=format&fit=crop&w=700&q=85"
+    }
+
+];
+
+let cart = [];
+let currentCategory = "Все";
+
+function renderMenu() {
+
+    const grid = document.getElementById("menu-grid");
+    const search = document.getElementById("search").value.toLowerCase();
+
+    const filtered = products.filter(product => {
+
+        const categoryMatch =
+            currentCategory === "Все" ||
+            product.category === currentCategory;
+
+        const searchMatch =
+            product.name.toLowerCase().includes(search) ||
+            product.description.toLowerCase().includes(search);
+
+        return categoryMatch && searchMatch;
+
+    });
+
+    grid.innerHTML = "";
+
+    if (filtered.length === 0) {
+        grid.innerHTML = "<p>По вашему запросу ничего не найдено.</p>";
+        return;
+    }
+
+    filtered.forEach(product => {
+
+        const card = document.createElement("div");
+        card.className = "food-card";
+
+        card.innerHTML = `
+            <img src="${product.image}" alt="${product.name}" loading="lazy">
+
+            <div class="food-info">
+
+                <h3>${product.name}</h3>
+
+                <p>${product.description}</p>
+
+                <div class="food-bottom">
+
+                    <span class="price">${product.price} ₽</span>
+
+                    <button class="add-button" onclick="addToCart(${product.id})">
+                        + В корзину
+                    </button>
+
+                </div>
+
+            </div>
+        `;
+
+        grid.appendChild(card);
+
+    });
+
+}
+
+function filterMenu(category, button) {
+
+    currentCategory = category;
+
+    document.querySelectorAll(".category-button").forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    renderMenu();
+
+}
+
+function addToCart(id) {
+
+    const product = products.find(item => item.id === id);
+
+    const existing = cart.find(item => item.id === id);
+
+    if (existing) {
+        existing.quantity++;
+    } else {
+        cart.push({
+            ...product,
+            quantity: 1
+        });
+    }
+
+    updateCart();
+    showNotice("Товар добавлен в корзину!");
+
+}
+
+function updateCart() {
+
+    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+    document.getElementById("cart-count").textContent = count;
+
+    const container = document.getElementById("cart-items");
+    const footer = document.getElementById("cart-footer");
+
+    container.innerHTML = "";
+
+    if (cart.length === 0) {
+
+        container.innerHTML = `
+            <div class="empty-cart">
+                <div>🛒</div>
+                <h3>Корзина пуста</h3>
+                <p>Добавьте что-нибудь вкусное из нашего меню</p>
+            </div>
+        `;
+
+        footer.style.display = "none";
+        return;
+
+    }
+
+    footer.style.display = "block";
+
+    cart.forEach(item => {
+
+        const element = document.createElement("div");
+        element.className = "cart-item";
+
+        element.innerHTML = `
+            <div>
+                <h4>${item.name}</h4>
+
+                <small>${item.price} ₽ за шт.</small>
+
+                <div class="quantity">
+                    <button onclick="changeQuantity(${item.id}, -1)">−</button>
+
+                    <span>${item.quantity}</span>
+
+                    <button onclick="changeQuantity(${item.id}, 1)">+</button>
+                </div>
+            </div>
+
+            <div style="text-align:right">
+                <strong>${item.price * item.quantity} ₽</strong>
+                <br>
+                <button class="remove-item" onclick="removeFromCart(${item.id})">
+                    Удалить
+                </button>
+            </div>
+        `;
+
+        container.appendChild(element);
+
+    });
+
+    const total = cart.reduce(
+        (sum, item) => sum + item.price * item.quantity,
+        0
+    );
+
+    document.getElementById("cart-total").textContent = total + " ₽";
+
+}
+
+function changeQuantity(id, amount) {
+
+    const item = cart.find(product => product.id === id);
+
+    if (!item) return;
+
+    item.quantity += amount;
+
+    if (item.quantity <= 0) {
+        cart = cart.filter(product => product.id !== id);
+    }
+
+    updateCart();
+
+}
+
+function removeFromCart(id) {
+
+    cart = cart.filter(item => item.id !== id);
+
+    updateCart();
+
+}
+
+function openCart() {
+
+    document.getElementById("cart-overlay").classList.add("open");
+
+    updateCart();
+
+}
+
+function closeCart() {
+
+    document.getElementById("cart-overlay").classList.remove("open");
+
+}
+
+function overlayClick(event) {
+
+    if (event.target.id === "cart-overlay") {
+        closeCart();
+    }
+
+}
+
+function checkout() {
+
+    if (cart.length === 0) return;
+
+    const total = cart.reduce(
+        (sum, item) => sum + item.price * item.quantity,
+        0
+    );
+
+    alert(
+        "Спасибо за заказ в кафе «Мята»!\n\n" +
+        "Сумма заказа: " + total + " ₽\n\n" +
+        "Это демонстрационный сайт. Для настоящего оформления заказов потребуется подключить сервер."
+    );
+
+    cart = [];
+
+    updateCart();
+    closeCart();
+
+}
+
+function showNotice(message) {
+
+    const notice = document.getElementById("notice");
+
+    notice.textContent = message;
+    notice.classList.add("show");
+
+    setTimeout(() => {
+        notice.classList.remove("show");
+    }, 2000);
+
+}
+
+renderMenu();
+updateCart();
+
+</script>
+
 </body>
 </html>
